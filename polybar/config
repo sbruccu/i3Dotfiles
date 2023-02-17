@@ -56,8 +56,8 @@ font-4 = fixfont:pixelsize=10;1
 font-5 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-6 = siji:pixelsize=10;1
 
-modules-left = xworkspaces
-modules-center = xwindow
+modules-left = xworkspaces xwindow
+modules-center =
 modules-right = xkeyboard pulseaudio temperature memory cpu wlan battery1 battery2 date powermenu
 
 cursor-click = pointer
@@ -111,7 +111,7 @@ label = %title:0:60:...%
 type = internal/pulseaudio
 
 # icon " "
-format-volume-prefix ="AUDIO " 
+format-volume-prefix ="VOL " 
 format-volume-prefix-foreground = ${colors.primary}
 format-volume = "<label-volume>"
 
@@ -361,15 +361,15 @@ thermal-zone = 0
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/bus/platform/drivers/coretemp/coretemp.0/hwmon/hwmon7/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon10/temp1_input
 
 ; Base temperature for where to start the ramp (in degrees celsius)
 ; Default: 0
-base-temperature = 30
+base-temperature = 20
 
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
-warn-temperature = 75
+warn-temperature = 60
 
 ; Whether or not to show units next to the temperature tokens (°C, °F)
 ; Default: true
@@ -378,18 +378,18 @@ units = false
 ; Available tags:
 ;   <label> (default)
 ;   <ramp>
-format = <ramp> <label>
+format = <label>
 
 ; Available tags:
 ;   <label-warn> (default)
 ;   <ramp>
-format-warn = <ramp> <label-warn>
+format-warn = <label-warn>
 
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label =  %temperature-c%
+label = TEMP %temperature-c%
 
 ; Available tokens:
 ;   %temperature% (deprecated)
