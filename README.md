@@ -48,5 +48,5 @@ From the i3lock-blur folder put the lock.png and lock.sh to the home folder than
 - chmod +x lock.sh
 
 ## Wallpaper
-Put pixelate.png in Pictures folde
+Put pixelate.png in Pictures folder
 
